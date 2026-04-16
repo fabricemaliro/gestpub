@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock title %}
+{% block content %}
+<script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css"/>
+<h1>COORDONNEES</h1>
+
+    
+<div id="map" style="height:500px;"></div>
+
+<script>
+    var map = L.map('map').setView([1.5667, 30.2500], 13); // Bunia
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    var parcelles = {{ parcelles|safe }};
+
+    parcelles.forEach(function(p) {
+        var polygon = L.polygon(p.coords).addTo(map);
+        polygon.bindPopup("Propriétaire: " + p.proprietaire);
+    });
+</script>
+{% endblock %}

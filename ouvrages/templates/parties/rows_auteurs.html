@@ -1,0 +1,20 @@
+{% for list_aut in list_aut %}
+   <tr>
+         {% if forloop.counter %}
+         <td>{{ forloop.counter}}</td>
+        <td><input type='checkbox'></td>
+        <td>{{ list_aut.prenom}}</td>
+        <td>{{ list_aut.prenom}}</td>
+        <td>{{ list_aut.Genre}}</td>
+        <td>{{ list_aut.datenaiss|date:'D, d M Y'}}</td>
+        <td>
+            <a href=''>Apercu</a>&nbsp;
+            <a href=''>Edit</a>&nbsp;
+            <a href=''>Supprimer</a>
+        </td>
+        {% else %}
+         <td colspan='7'>Aucune donnee Trouvee</td>
+         {% endif %}
+        
+   </tr> 
+{% endfor %}

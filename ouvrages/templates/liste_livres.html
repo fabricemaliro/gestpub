@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}<br>
+{% block title %}<h4>Liste des livres</h4>{% endblock %}<hr>
+<div class='table-responsive'>
+<table class='table table-bordered table-condensed table-hover'style='width:100%'>
+    <thead>
+        <tr>
+            <th colspan='9'>
+                 <a href="{% url 'enregistrer_livre' %}"><button type='button'class='btn btn-outline-success'>Nouveau Livre</button></a>
+            </th>
+        </tr>
+        <th>Num</th>
+        <th>Livre</th>
+        <th>Contenu</th>
+        <th>Orientation</th>
+        <th>Publie le</th>
+        <th>Auteur</th>
+        <th>Publie</th>
+        <th>Nbre Vues</th>
+        <th>Operation</th>
+    </thead>
+    <tbody>
+        {% include "parties/rows_livre.html" %}
+    </tbody>
+    <p>
+    <tfoot>
+       
+    </tfoot>
+</table>
+</div>
+{% endblock %}

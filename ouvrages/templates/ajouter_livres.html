@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}<br>
+{% block title %}<h4>Ajout des livres</h4>{% endblock %}<hr>
+{% if message %}
+<div class='alert alert-warning'>
+    {{ message }}
+</div>
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+   {{ form.as_p }}
+    <div>
+        <button class='btn btn-outline-success'type='submit'><span class='glyphicon glyphicon-floppy-saved'> Enregistrer</span></button>
+        <button class='btn btn-outline-danger'type='reset'><span class='glyphicon glyphicon-refresh'>Annuler</span></button>
+    </div>
+</form>
+{% endblock content %}

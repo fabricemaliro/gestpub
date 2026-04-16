@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}<br>
+{% block title %}<h4>Liste des auteurs</h4>{% endblock %}
+   <div class='table-responsive'>
+<table class='table table-bordered table-condensed table-hover'style='width:100%'>
+    <thead>
+        <tr>
+            <th colspan='7'>
+<div>
+
+    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        id='btnmodal' data-bs-whatever="@mdo">Nouvel Auteur</button>
+    <br>
+    <div class="modal" id="exampleModal" tabindex="" aria-labelledby="exampleModalLabel" data-bs-backdrop="static"
+        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" id='xx' tabindex="-1">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nouvel auteur</h1>
+                </div>
+                <div class="modal-body">
+                    <form hx-post="{% url 'ajouter_auteur' %}" hx-target="#nouvel_enregistrement" hx-swap="afterbegin"
+                        hx-on:success="#xx.close();this.reset();" class="mb-4 form-inline">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger"
+                                data-bs-dismiss="modal">Annuler</button>
+                            <button type="submit" id='btnsave' class="btn btn-outline-primary">Enregistrer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            </th>
+        </tr>
+        <th>Num</th>
+        <th><input type="checkbox"></th>
+        <th>auteur</th>
+        <th>prenom</th>
+        <th>Genre</th>
+        <th>datenaiss le</th>
+        <th>Operation</th>
+    </thead>
+    <tbody>
+        {% include "parties/rows_auteurs.html" %}
+    <tr>
+        <td colspan='7'>
+            <a href="{% url 'ajouter_auteur' %}"><button type='button'class='btn btn-outline-success'>Nouvel Auteur</button></a>
+        </td>
+
+    </tr>
+    </tbody>
+    <p>
+    <tfoot>
+        
+        
+    </tfoot>
+</table>
+</div>
+
+{% endblock %}

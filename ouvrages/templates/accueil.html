@@ -1,0 +1,214 @@
+
+{% block content %}
+    <!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Registration Card</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #1f3a4d;
+    color: white;
+    position: fixed;
+}
+
+.sidebar h3 {
+    text-align: center;
+    padding: 15px;
+    background: #163042;
+    margin: 0;
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid #2c4c63;
+}
+
+.sidebar a:hover {
+    background: #2c4c63;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+/* CARD */
+.card {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 15px;
+}
+
+.card-header {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1f6fa8;
+    margin-bottom: 10px;
+}
+
+/* INFO TABLE */
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.info-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.info-table td:first-child {
+    width: 200px;
+    font-weight: bold;
+    background: #f1f1f1;
+}
+
+/* COURSE TABLE */
+.course-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.course-table th {
+    background: #1f6fa8;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+.course-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.course-table tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* BUTTON */
+.btn {
+    float: right;
+    background: #1f6fa8;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 14px;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h3>KAMBALE MALIRO FABRICE</h3>
+    <a href="#">Dashboard</a>
+    <a href="#">Profile</a>
+    <a href="#">Registration</a>
+    <a href="#">Course Registration</a>
+    <a href="#">Tuition Payment</a>
+    <a href="#">Registration Card</a>
+    <a href="#">Fee Details</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <div class="card">
+
+        <div class="card-header">
+            Registration Card
+            <a href="#" class="btn">Print Preview</a>
+        </div>
+
+        <!-- INFO TABLE -->
+        <table class="info-table">
+            <tr>
+                <td>Award(s)</td>
+                <td>MASTER OF SCIENCE IN INFORMATION TECHNOLOGY - SOFTWARE ENGINEERING</td>
+            </tr>
+            <tr>
+                <td>Semester</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>Year</td>
+                <td>SEM2-2025-2026</td>
+            </tr>
+            <tr>
+                <td>Major I</td>
+                <td>SOFTWARE ENGINEERING</td>
+            </tr>
+            <tr>
+                <td>Minor I</td>
+                <td>-</td>
+            </tr>
+        </table>
+
+        <h3>Course Details</h3>
+
+        <!-- COURSE TABLE -->
+        <table class="course-table">
+            <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Credits</th>
+            </tr>
+            <tr>
+                <td>GRGS 5203</td>
+                <td>RESEARCH METHODS</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>MSCT 5203</td>
+                <td>ANALYSIS AND DESIGN OF ALGORITHMS</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>MICT 5203</td>
+                <td>IS PROJECT MANAGEMENT</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>MICT 5204</td>
+                <td>DATABASE SYSTEMS</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>MSCT 5202</td>
+                <td>AGILE AND DEVOPS PRACTICES</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>MICT 6102</td>
+                <td>DATA ENGINEERING AND ANALYTICS</td>
+                <td>3</td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+
+{% endblock %}

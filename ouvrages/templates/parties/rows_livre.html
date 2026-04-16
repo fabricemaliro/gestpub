@@ -1,0 +1,32 @@
+{% for article in article %}
+<tr>
+    <td> {{ forloop.counter }}</td>
+    <td> {{article.titre}}</td>
+    <td> {{article.contenu}} </td>
+    <td> 
+        <!--PARCOURIR LES CHAMPS TABLEAUX -->
+        
+        {% for tag in article.tag.all %}
+            {{tag.tag}}
+            {% if tag %}
+            ,
+            {% else %}
+
+            {% endif %}
+        {% endfor %}
+    </td>
+    <td> {{article.date_publication|date:"d M Y"}} </td>
+    <td> {{article.auteur.nom }} {{article.auteur.prenom}} </td>
+    <td {% if article.est_publie %} class='alert alert-success' {% else%}
+    class='alert alert-warning '
+    {% endif %}> 
+        {% if article.est_publie %}
+            Publie
+        {% else %}
+            Non Publie
+        {% endif %}
+    </td>
+    <td> {{article.nb_vues}} </td>
+    <td> <a href=''>Edit</a>&nbsp; <a href=''>Supprimer</a> &nbsp;<a href=''>Apercu</a></td>
+</tr>
+{% endfor %}

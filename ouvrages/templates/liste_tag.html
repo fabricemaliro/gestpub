@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}<br>
+{% block title %}<h4>Liste de domaines</h4>{% endblock %}<hr>
+
+<form method='post'class='inline'>
+    {% csrf_token %}
+    {{ form.as_p }}
+<input type='submit' value='valider' class='btn btn-outline-success'/>
+<input type='reset' value='Annuler' class='btn btn-outline-danger'/>
+</form>
+
+<div class='table-responsive'>
+<table class='table table-bordered table-condensed table-hover'>
+    <thead>
+        <th>Num</th>
+        <th>Domaine</th>
+        <th>Modifier</th>
+    </thead>
+    <tbody>
+        {% include "parties/rows_tag.html" %}
+    </tbody>
+    <p>
+    <tfoot>
+       
+    </tfoot>
+</table>
+</div>
+{% endblock  %}
