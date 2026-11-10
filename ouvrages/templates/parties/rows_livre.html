@@ -25,7 +25,7 @@
     </td>
     <td> {{article.titre}}</td>
     <td> {{article.code_livre}}</td>
-    <td> {{article.contenu|truncatewords:3}} </td>
+    <td> {{article.contenu|truncatewords:2}} </td>
     <td> 
         <!--PARCOURIR LES CHAMPS TABLEAUX -->        
         {% for tag in article.tag.all %}
