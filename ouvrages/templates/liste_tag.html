@@ -1,28 +1,169 @@
-{% extends "base.html" %}
-{% block content %}<br>
-{% block title %}<h4>Liste de domaines</h4>{% endblock %}<hr>
+{% extends "nav.html" %}
+{% block content %}
+ <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">                
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        GESTOUV
+                        <small>Liste Auteurs</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="#">Tables</a></li>
+                        <li class="active">Data tables</li>
+                    </ol>
+                </section>
 
-<form method='post'class='inline'>
-    {% csrf_token %}
-    {{ form.as_p }}
-<input type='submit' value='valider' class='btn btn-outline-success'/>
-<input type='reset' value='Annuler' class='btn btn-outline-danger'/>
-</form>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                         
+                            <div class="box">
+                                
+                                <div class="box-header">
+                                    <h3 class="box-title">
 
-<div class='table-responsive'>
-<table class='table table-bordered table-condensed table-hover'>
-    <thead>
-        <th>Num</th>
-        <th>Domaine</th>
-        <th>Modifier</th>
-    </thead>
-    <tbody>
-        {% include "parties/rows_tag.html" %}
-    </tbody>
-    <p>
-    <tfoot>
-       
-    </tfoot>
-</table>
+                                    </h3>                                  
+                                </div><!-- /.box-header -->
+
+                                
+                                <div class="box-body table-responsive">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                    
+
+
+
+
+
+        
+        <tr>
+            <th colspan='5'>
+
+<!-- 1. Bouton de déclenchement (Trigger) -->
+<button class="btn btn-success" data-toggle="modal" data-target="#monModal">
+ Nouvel Auteur
+</button>
+
+<!-- 2. Structure de la Modale -->
+<div class="modal fade" id="monModal" tabindex="-1" role="dialog" aria-labelledby="monModalLabel" aria-hidden="true"
+data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <!-- En-tête -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="monModalLabel">Ajout Etiquette</h4>
+      </div>
+      
+      <!-- Corps -->
+      <div class="modal-body">
+        <div class="box-header">
+                                    <h3 class="box-title">
+                                        <form method='post'class=''>
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                   
+
+                                    </h3>                                  
+                                </div><!-- /.box-header -->
+      </div>
+      
+      <!-- Pied de page -->
+      <div class="modal-footer">
+         <input type='submit' value='valider' class='btn btn-success'/>
+                                    <input type='reset' value='Annuler' class='btn btn-danger'/>
+                                </form>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+
+      </div>
+      
+    </div>
+  </div>
 </div>
-{% endblock  %}
+
+
+
+               
+            </th>
+        </tr>
+        <tr>
+            <th class='col-xs-2'>Num</th>
+            <th class='col-xs-2'> </th>
+            <th class='col-xs-2'><input type="checkbox"></th>
+            <th>Domaine</th>
+            <th>Operation</th>
+        </tr>
+        </thead>
+                                        
+            <tbody>
+              {% include "parties/rows_tag.html" %}
+            </tbody>
+            <tfoot>
+                                           
+                <tr>
+                    <th colspan='10'>
+                       
+<!-- 1. Bouton de déclenchement (Trigger) -->
+<button class="btn btn-success" data-toggle="modal" data-target="#monModal">
+ Nouvel Auteur
+</button>
+
+<!-- 2. Structure de la Modale -->
+<div class="modal fade" id="monModal" tabindex="-1" role="dialog" aria-labelledby="monModalLabel" aria-hidden="true"
+data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <!-- En-tête -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="monModalLabel">Ajout Etiquette</h4>
+      </div>
+      
+      <!-- Corps -->
+      <div class="modal-body">
+        <div class="box-header">
+                                    <h3 class="box-title">
+                                        <form method='post'class=''>
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                   
+
+                                    </h3>                                  
+                                </div><!-- /.box-header -->
+      </div>
+      
+      <!-- Pied de page -->
+      <div class="modal-footer pull-left">
+         <input type='submit' value='valider' class='btn btn-success'/>
+            <input type='reset' value='Annuler' class='btn btn-danger'/>
+        </form>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+                    </th>
+                </tr>
+            </tfoot>
+                                    </table>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
+
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+
+
+
+{% endblock %}
+
+

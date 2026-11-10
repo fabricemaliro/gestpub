@@ -1,7 +1,27 @@
 {% for tag in tag %}
 <tr>
     <td> {{ forloop.counter }}</td>
-    <td> {{tag.tag}}</td>
+    <td>
+
+                           
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default"><span class='fa fa-align-justify'></span></button>
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="{% url 'edit_etiquette' id=tag.id %}"><span class='fa fa-edit'></span>&nbsp;Modifier</a></li>
+                                                <li><a href="#"><span class='glyphicon glyphicon-eye-open'></span>&nbsp;Apercu action</a></li>
+                                                <li><a href="#"><span class="glyphicon glyphicon-trash"></span>&nbsp;Supprimer </a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#"> <span class='fa fa-user'><span>&nbsp;Selectionner</a></li>
+                                            </ul>
+                                        </div>
+                                   
+    </td>
+        <td><input type='checkbox'></td>
+    <td> {{tag.tags}}</td>
     <td> <a href='' class=''>Edit</a> </td>
 </tr>
 {% endfor %}

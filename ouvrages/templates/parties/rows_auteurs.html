@@ -2,10 +2,30 @@
    <tr>
          {% if forloop.counter %}
          <td>{{ forloop.counter}}</td>
+             <td>
+
+                           
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default"><span class='fa fa-align-justify'></span></button>
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="{% url 'edit_auteur' id=list_aut.id %}"><span class='fa fa-edit'></span>&nbsp;Modifier</a></li>
+                                                <li><a href="#"><span class='glyphicon glyphicon-eye-open'></span>&nbsp;Apercu action</a></li>
+                                                <li><a href="#"><span class="glyphicon glyphicon-trash"></span>&nbsp;Supprimer </a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#"> <span class='fa fa-user'><span>&nbsp;Selectionner</a></li>
+                                            </ul>
+                                        </div>
+                                   
+    </td>
         <td><input type='checkbox'></td>
-        <td>{{ list_aut.prenom}}</td>
+        <td>{{ list_aut.nom}}</td>
         <td>{{ list_aut.prenom}}</td>
         <td>{{ list_aut.Genre}}</td>
+         <td>{{ list_aut.ville}}</td>
         <td>{{ list_aut.datenaiss|date:'D, d M Y'}}</td>
         <td>
             <a href=''>Apercu</a>&nbsp;

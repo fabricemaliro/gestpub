@@ -1,64 +1,87 @@
-{% extends "base.html" %}
-{% block content %}<br>
-{% block title %}<h4>Liste des auteurs</h4>{% endblock %}
-   <div class='table-responsive'>
-<table class='table table-bordered table-condensed table-hover'style='width:100%'>
-    <thead>
-        <tr>
-            <th colspan='7'>
-<div>
+{% extends "nav.html" %}
+{% block content %}
+ <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">                
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        GESTOUV
+                        <small>Liste Auteurs</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="#">Tables</a></li>
+                        <li class="active">Data tables</li>
+                    </ol>
+                </section>
 
-    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-        id='btnmodal' data-bs-whatever="@mdo">Nouvel Auteur</button>
-    <br>
-    <div class="modal" id="exampleModal" tabindex="" aria-labelledby="exampleModalLabel" data-bs-backdrop="static"
-        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" id='xx' tabindex="-1">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nouvel auteur</h1>
-                </div>
-                <div class="modal-body">
-                    <form hx-post="{% url 'ajouter_auteur' %}" hx-target="#nouvel_enregistrement" hx-swap="afterbegin"
-                        hx-on:success="#xx.close();this.reset();" class="mb-4 form-inline">
-                        {% csrf_token %}
-                        {{form.as_p}}
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-danger"
-                                data-bs-dismiss="modal">Annuler</button>
-                            <button type="submit" id='btnsave' class="btn btn-outline-primary">Enregistrer</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                         
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title"></h3>                                  
+                                </div><!-- /.box-header -->
+                                <div class="box-body table-responsive">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                    
+
+
+
+        
+        <tr>
+            <th colspan='10'>
+                <a href="{% url 'ajouter_auteur' %}"><button type='button'class='btn btn-success'>Nouvel Auteur</button></a>
             </th>
         </tr>
-        <th>Num</th>
-        <th><input type="checkbox"></th>
-        <th>auteur</th>
-        <th>prenom</th>
-        <th>Genre</th>
-        <th>datenaiss le</th>
-        <th>Operation</th>
-    </thead>
-    <tbody>
-        {% include "parties/rows_auteurs.html" %}
-    <tr>
-        <td colspan='7'>
-            <a href="{% url 'ajouter_auteur' %}"><button type='button'class='btn btn-outline-success'>Nouvel Auteur</button></a>
-        </td>
+        <tr>
+            <th>Num</th>
+            <th> </th>
+            <th><input type="checkbox"></th>
+            <th>autaeur</th>
+            <th>prenom</th>
+            <th>Genre</th>
+            <th>Ville le</th>
+            <th>datenaiss le</th>
+            <th>Operation</th>
+        </tr>
+        </thead>
+                                        
+            <tbody>
+                {% include "parties/rows_auteurs.html" %}
+            </tbody>
+            <tfoot>
+                                           
+                <tr>
+                    <th colspan='10'>
+                       <a href="{% url 'enregistrer_livre' %}"><button type='button'class='btn btn-success'>Nouveau Livre</button></a>
+                    </th>
+                </tr>
+            </tfoot>
+                                    </table>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
 
-    </tr>
-    </tbody>
-    <p>
-    <tfoot>
-        
-        
-    </tfoot>
-</table>
-</div>
-
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+            
+    <script type="text/javascript">
+        $(function() {
+                $('#example2').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            });
+    </script>
 {% endblock %}
+
+

@@ -1,32 +1,56 @@
+
+{% if article %}
 {% for article in article %}
-<tr>
+<tr id='data_tab'>
     <td> {{ forloop.counter }}</td>
+
+    <td>
+
+                           
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default"><span class='fa fa-align-justify'></span></button>
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="{% url 'edit_art' id=article.id %}"><span class='fa fa-edit'></span>&nbsp;Modifier</a></li>
+                                                <li><a href="{% url 'detail_art' id=article.id %}"><span class='glyphicon glyphicon-eye-open'></span>&nbsp;Apercu action</a></li>
+                                                <li><a href="{% url 'suppression_livre' id=article.id %}"><span class="glyphicon glyphicon-trash"></span>&nbsp;Supprimer </a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="{% url 'detail_art' id=article.id %}"> <span class='fa fa-user'><span>&nbsp;Selectionner</a></li>
+                                            </ul>
+                                        </div>
+                                   
+    </td>
     <td> {{article.titre}}</td>
-    <td> {{article.contenu}} </td>
+    <td> {{article.code_livre}}</td>
+    <td> {{article.contenu|truncatewords:3}} </td>
     <td> 
-        <!--PARCOURIR LES CHAMPS TABLEAUX -->
-        
+        <!--PARCOURIR LES CHAMPS TABLEAUX -->        
         {% for tag in article.tag.all %}
-            {{tag.tag}}
+            {{tag.tags}}
             {% if tag %}
             ,
             {% else %}
-
             {% endif %}
         {% endfor %}
     </td>
     <td> {{article.date_publication|date:"d M Y"}} </td>
     <td> {{article.auteur.nom }} {{article.auteur.prenom}} </td>
-    <td {% if article.est_publie %} class='alert alert-success' {% else%}
-    class='alert alert-warning '
-    {% endif %}> 
+    <td>
         {% if article.est_publie %}
-            Publie
+            <span class="label label-success">Publie</span>
         {% else %}
-            Non Publie
+        <span class="label label-danger"> Non Publie</span>
+           
         {% endif %}
     </td>
-    <td> {{article.nb_vues}} </td>
-    <td> <a href=''>Edit</a>&nbsp; <a href=''>Supprimer</a> &nbsp;<a href=''>Apercu</a></td>
+
+    <td style="width:3%"><img style="width:100%" src="{{article.image_livre.url}}"></td>
+    <td><a href="{% url 'detail_art' id=article.id %}"><span class='fa fa-eye'></span> Detail</a></td>
 </tr>
 {% endfor %}
+{% endif %}
+
+       
