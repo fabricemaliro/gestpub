@@ -1,0 +1,76 @@
+
+        <table class="table table-bordered table-condensed table-striped">
+            <tr>
+                <th style="width:10%;">ID Liv</th>
+                <td>{{article.id}}</td>
+                <td style="width:15%" rowspan="3"><img style="width:100%" src="{{article.image_livre.url}}"></td>
+            </tr>
+             <tr>
+                <th style="width:10%;">Titre Liv</th>
+                <td>{{article.titre}}</td>
+            </tr>
+            <tr>
+                <th style="width:10%;">Code Liv</th>
+                <td>{{article.code_livre}}</td> 
+            </tr>
+            <tr>
+                <th style="width:10%;">Domaine Liv</th>
+                <td>
+                <!--PARCOURIR LES CHAMPS TABLEAUX -->        
+                {% for tag in article.tag.all %}
+                    {{tag.tags}}
+                    {% if tag %}
+                    ,
+                    {% else %}
+                    {% endif %}
+                {% endfor %}
+            </td>
+                <td rowspan="3" style="width:15%">
+
+                     {% if barcode %}
+                    <img style="width:100%"src="data:image/png;base64,{{barcode}}" alt="Code barre">
+                    {% endif %}
+                </td>
+                
+            </tr>
+            <tr>
+                <th style="width:10%;">Date publ</th>
+                <td>{{article.date_publication}}</td>
+            </tr>
+             <tr>
+                <th style="width:10%;">Ville publ</th>
+                 <td>{{article.ville}}</td>
+            </tr>
+            <tr>
+                <th style="width:10%;">Etat Publ</th>
+                
+                <td>
+
+                     {% if article.est_publie %}
+            <span class="label label-success">Publie</span>
+        {% else %}
+        <span class="label label-danger"> Non Publie</span>
+           
+        {% endif %}
+
+                </td>
+                <td rowspan="3" style="width:15%">
+
+                     {% if qr_code %}
+                    <img style="width:100%"src="data:image/png;base64,{{qr_code}}" alt="qrcode">
+                    {% endif %}
+
+                </td>
+            </tr>
+            <tr>
+            <th style="width:10%;">Nb vues</th>
+            <td>{{article.nb_vues}}</td>
+
+            </tr>
+            <tr>
+                <th style="width:10%;">Contenu</th>
+                <td>{{article.contenu}}</td>
+            </tr>
+            
+        </table>
+ 

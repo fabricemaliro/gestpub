@@ -1,0 +1,359 @@
+{% load static %}
+{% include "nav.html" %}
+{% block content %}
+<!-- Right side column. Contains the navbar and content of the page -->
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Gestion des ouvrages
+            <small>Liste des livres</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Tables</a></li>
+            <li class="active">Data tables</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"></h3>
+                    </div><!-- /.box-header -->
+                    
+                    <div class="box-body table-responsive">
+<div id="zone-impression" class="container mt-4">
+    <!-- CARTE PRINCIPALE -->
+    <div class="ouvrage-card shadow-lg">
+        <div class="row g-0">
+            <table>
+            <!-- COLONNE INFORMATIONS -->
+            <div class="col-md-8 right-panel">
+                <tr>
+                        <th colspan='2'>
+                            <h2 class="main-title">
+                                {{ article.titre }}
+                            </h2>
+                        </th>
+                </tr>
+                <tr>
+                <td>
+                <hr>
+                <!-- INFOS -->
+                <div class="info-block">
+                    <p>
+                        <strong>Auteur :</strong>
+                        {{ article.auteur }}
+                    </p>
+
+                    <p>
+                        <strong>Genre :</strong>
+
+                        {% for tag in article.tag.all %}
+                            {{ tag.tags }}
+                            {% if not forloop.last %}
+                                ,
+                            {% endif %}
+                        {% endfor %}
+                    </p>
+                    <p>
+                        <strong>Code Livre :</strong>
+                        {{ article.code_livre }}
+                    </p>
+                    <p>
+                        <strong>Date publication :</strong>
+                        {{ article.date_publication }}
+                    </p>
+                    <p>
+                        <strong>Ville :</strong>
+                        {{ article.ville }}
+                    </p>
+                    <p>
+                        <strong>Nombre de vues :</strong>
+                        {{ article.nb_vues }}
+                    </p>
+                    <p>
+                        <strong>Etat :</strong>
+
+                        {% if article.est_publie %}
+                            <span class="badge bg-success">
+                                Publié
+                            </span>
+                        {% else %}
+                            <span class="badge bg-danger">
+                                Non publié
+                            </span>
+                        {% endif %}
+                    </p>
+                </div>
+            </td>
+            <td>
+                 <!-- COLONNE IMAGE + QR -->
+                    <div class="col-md-4 left-panel text-center">
+                        <!-- IMAGE LIVRE -->
+                        {% if article.image_livre %}
+                            <img src="{{ article.image_livre.url }}"
+                                class="book-image">
+                        {% endif %}
+                        <!-- AUTEUR -->
+                        <p class="author-name">
+                        Auteur: {{ article.auteur }}
+                        </p>
+                    </div>
+            </td>
+        </tr>
+    </table>
+<hr><br/>
+                <!-- CONTENU -->
+                <div class="content-section">
+                    <h3 class="fw-bold">
+                        Résumé de l’ouvrage
+                    </h3>
+
+                    <p class="content-text">
+                        {{ article.contenu }}
+                    </p>
+
+                </div>
+
+                <table>
+                    <tr>
+                    <td>
+                <!-- CODE BARRE -->
+                <div class="barcode-section text-center mt-4">
+
+                    {% if barcode %}
+
+                        <img src="data:image/png;base64,{{ barcode }}"
+                             class="barcode-image">
+
+                    {% endif %}
+
+                </div>
+            </td>
+            <td>       &nbsp;</td>
+            <td style='padding-left:120px'>
+                <!-- QR CODE -->
+            
+                <div class="qr-section">
+
+                    {% if qr_code %}
+
+                        <img src="data:image/png;base64,{{qr_code}}"
+                             class="qr-image">
+
+                    {% endif %}
+
+                    <h6 class="mt-2 fw-bold">
+                        SCAN QR CODE
+                    </h6>
+
+                    <p class="small text-muted">
+                        Télécharger ou consulter l’ouvrage
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</td>
+</tr>
+</table>
+    <!-- BOUTONS -->
+    <div class="text-center mt-4 no-print">
+
+        <button onclick="imprimerZone()"
+                class="btn btn-dark px-4">
+
+            <i class="fa fa-print"></i>
+            Imprimer
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<style>
+
+.ouvrage-card{
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.left-panel{
+    background:#f4f4f4;
+    padding:25px;
+    border-right:2px solid #ddd;
+}
+
+.right-panel{
+    padding:30px;
+}
+
+.book-image{
+    width:110px;
+    height:110px;
+    object-fit:cover;
+    border-radius:8px;
+    margin-bottom:10px;
+}
+
+.book-title{
+    font-size:22px;
+    font-family:Georgia, serif;
+    color:#5b3b3b;
+    margin-bottom:5px;
+}
+
+.author-name{
+    font-style:italic;
+    color:#777;
+}
+
+.main-title{
+    font-weight:bold;
+    font-size:22px;
+}
+
+.info-block p{
+    margin-bottom:8px;
+    font-size:15px;
+}
+
+.content-text{
+    text-align:justify;
+    line-height:1.7;
+    font-size:15px;
+}
+
+.qr-image{
+    width:170px;
+    margin-top:20px;
+}
+
+.barcode-image{
+    width:320px;
+    max-height:120px;
+}
+
+@media print{
+
+    .no-print{
+        display:none;
+    }
+
+    body{
+        margin:0;
+        padding:0;
+    }
+
+    .ouvrage-card{
+        box-shadow:none;
+    }
+
+}
+
+</style>
+
+<script>
+
+function imprimerZone() {
+
+    var contenu = document.getElementById('zone-impression').innerHTML;
+
+    var fenetre = window.open('', '', 'width=1000,height=900');
+
+    fenetre.document.write(`
+        <html>
+
+        <head>
+  <link href="{% static 'css/4.7.0_font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/bootstrap@5.3.0_bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+            <title>Fiche Ouvrage</title>
+<style>
+                body{
+                    font-family:Arial;
+                    padding:20px;
+                    background:#fff;
+                }
+
+                .ouvrage-card{
+                    border-radius:15px;
+                    overflow:hidden;
+                }
+
+                .left-panel{
+                    background:#f4f4f4;
+                    padding:25px;
+                    border-right:2px solid #ddd;
+                }
+
+                .right-panel{
+                    padding:30px;
+                }
+
+                .book-image{
+                    width:120px;
+                    height:220px;
+                    object-fit:cover;
+                    border-radius:8px;
+                }
+
+                .book-title{
+                    font-size:42px;
+                    font-family:Georgia;
+                    color:#5b3b3b;
+                }
+
+                .main-title{
+                    font-size:32px;
+                    font-weight:bold;
+                }
+
+                .qr-image{
+                    width:140px;
+                }
+
+                .barcode-image{
+                    width:280px;
+                }
+
+                .no-print{
+                    display:none;
+                }
+
+            </style>
+
+        </head>
+
+        <body>
+
+            ${contenu}
+
+        </body>
+
+        </html>
+    `);
+
+    fenetre.document.close();
+
+    fenetre.print();
+
+}
+
+</script>
+
+
+{% endblock %}

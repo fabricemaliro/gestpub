@@ -1,0 +1,89 @@
+<div id="example1">
+    <table class="table table-bordered table-striped">
+        <thead>
+
+
+            <tr>
+                <th colspan='11'>
+                    <a href="{% url 'enregistrer_livre' %}"><button type='button' class='btn btn-success'>Nouveau
+                            Livre</button></a>
+                </th>
+            </tr>
+            <tr>
+                <td colspan='11'>
+                    <i class="text-4xl text-success mb-4">
+
+
+                        {% if nbretrouve %}
+                        <b style="color:red">{{ nbretrouve|length }} 
+                            {% if nbretrouve|length > 1 %}
+                            Livres trouves
+                            {% else %}
+                            Livre trouve 
+                            {% endif%}</b>
+                        {% elif article|length > 0%}
+                        <b style="color:red"> {{ article|length }} 
+                            {% if article|length > 1 %}
+                            Livres trouves
+                            {% else%}
+                            Livre trouve 
+                            {% endif%}</b>
+                        {% endif %}
+                    </i>
+                </td>
+            </tr>
+            <th>Num</th>
+            <th>
+
+            </th>
+            <th>Livre</th>
+             <th>CodeLiv</th>
+            <th>Contenu</th>
+            <th>Orientation</th>
+            <th>Publie le</th>
+            <th>Auteur</th>
+            <th>Publie</th>
+            <th>Phot</th>
+            <th>Operation</th>
+        </thead>
+
+        <tbody>
+            {% if ech_mot_recherche %}
+            <tr>
+                <td colspan='11'>
+                    <div class='alert alert-warning'>
+                        <p>
+                        <p><b class=''>Aucun enregistrement trouvee correspondant au mot de recherche <mark><span
+                                        style=color:red;>{{ech_mot_recherche}} </span></mark></b>
+                            <br /><a href="{% url 'liste_article'%}">retour</a>
+                        <p> Redirection dans <span id="countdown" style='color:red;'>7</span> secondes...
+                        </p>
+                    </div>
+                    <p>
+                        <script>
+                            let temps = 7;
+                            const compteur = document.getElementById("countdown");
+                            setInterval(function () {
+                                temps--;
+                                compteur.innerHTML = temps;
+                            }, 1000);
+                        </script>
+                        <meta http-equiv="refresh" content="7" ;url={% url 'liste_article' %}">
+                </td>
+            </tr>
+            {% else %}
+            {% include "parties/rows_livre.html" %}
+            {% endif %}
+        </tbody>
+        <tfoot>
+
+            <tr>
+                <th colspan='11'>
+                    <a href="{% url 'enregistrer_livre' %}"><button type='button' class='btn btn-success'>Nouveau
+                            Livre</button></a>
+                </th>
+            </tr>
+
+        </tfoot>
+    </table>
+</div>
